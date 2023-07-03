@@ -102,4 +102,4 @@ async def read_pref(pref_name: str):
     if pref_name in (prefectures) or pref_name in (prefectures_without_name):
         pref = pref_introduction(pref=pref_name)
         return pref
-    return {"Input": "invalid_name"}
+    return {"code": 101, "message": "invalid name error"}
