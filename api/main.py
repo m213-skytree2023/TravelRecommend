@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from random import randint
 
+from pref_intro import pref_introduction
+
 app = FastAPI()
 
 app.add_middleware(
@@ -36,3 +38,12 @@ def update_item(item_id: int, item: Item):
 @app.delete("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_price": item.price}
+
+#Prefectures introduction
+@app.get("/pref")
+def read_pref():
+    return {"Input": "pref_name"}
+@app.get("/pref/{pref_name}")
+async def read_pref(pref_name: str):
+    pref = pref_introduction(pref=pref_name)
+    return pref
