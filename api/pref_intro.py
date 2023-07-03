@@ -72,5 +72,5 @@ def pref_introduction(pref="愛知"):
 
 if __name__=="__main__":
     api_pref = pref_introduction()
-    print('spot of id1 :' + {api_pref[0]["spot_en"]})
+    print('spot of id1 :' + api_pref[0]["spot_en"])
     print(api_pref)
