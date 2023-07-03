@@ -5,7 +5,7 @@ from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
 API_URL = "https://api.openai.com/v1/chat/completions"
-API_KEY = "" 
+API_KEY = ""
 
 def chat(text,
          messages=None,
@@ -42,7 +42,6 @@ def chat(text,
 
     # APIを叩く、streamをTrueに
     resp = requests.post(API_URL, headers=headers, json=payload, stream=True, verify=False)
-
     response_text = ''
     for chunk in resp.iter_lines():
         try:
@@ -51,26 +50,27 @@ def chat(text,
             if content:
                 response_text += content
                 #yield content
-        except Exception as e:
-            # 予期しない例外が発生した場合の処理
-            print("予期しないエラーが発生しました:", e)
+        except:
+            ...
     else:  
         messages += [{'role': 'assistant', 'content': response_text}]
 
     return response_text
 
 
-def pref_introduction(pref="京都"):
+def pref_introduction(pref="愛知"):
     text = pref + '''の観光スポット3点とその説明をしてください。
                 制約
                 ・各説明を150字以内で生成
                 ・以下のようなjson形式で出力
-                [{"id": 1, "spot": "spot1", "introduction": ""},{"id": 2, "spot": "spot2", "introduction": ""},{"id": 3, "spot": "spot3", "introduction": ""}]
+                ・観光スポットの英語名を"spot_en"に表示
+                [{"id": 1, "spot": "spot1", "spot_en": "spot1_en", "introduction": ""},{"id": 2, "spot": "spot2", "spot_en": "spot2_en", "introduction": ""},{"id": 3, "spot": "spot3", "spot_en": "spot3_en", "introduction": ""}]
             '''
     response_text = chat(text, [])
     response_json = json.loads(response_text)
     return response_json
-        
+
 if __name__=="__main__":
     api_pref = pref_introduction()
+    print('spot of id1 :' + api_pref[0]["spot_en"])
     print(api_pref)
