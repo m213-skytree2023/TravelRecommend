@@ -51,9 +51,8 @@ def chat(text,
             if content:
                 response_text += content
                 #yield content
-        except Exception as e:
-            # 予期しない例外が発生した場合の処理
-            print("予期しないエラーが発生しました:", e)
+        except:
+            ...
     else:  
         messages += [{'role': 'assistant', 'content': response_text}]
 
