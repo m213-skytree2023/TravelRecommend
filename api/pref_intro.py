@@ -6,6 +6,58 @@ urllib3.disable_warnings(InsecureRequestWarning)
 
 API_URL = "https://api.openai.com/v1/chat/completions"
 API_KEY = ""
+# 都道府県名のリスト
+prefectures = [
+    "北海道",
+    "青森県",
+    "岩手県",
+    "宮城県",
+    "秋田県",
+    "山形県",
+    "福島県",
+    "茨城県",
+    "栃木県",
+    "群馬県",
+    "埼玉県",
+    "千葉県",
+    "東京都",
+    "神奈川県",
+    "新潟県",
+    "富山県",
+    "石川県",
+    "福井県",
+    "山梨県",
+    "長野県",
+    "岐阜県",
+    "静岡県",
+    "愛知県",
+    "三重県",
+    "滋賀県",
+    "京都府",
+    "大阪府",
+    "兵庫県",
+    "奈良県",
+    "和歌山県",
+    "鳥取県",
+    "島根県",
+    "岡山県",
+    "広島県",
+    "山口県",
+    "徳島県",
+    "香川県",
+    "愛媛県",
+    "高知県",
+    "福岡県",
+    "佐賀県",
+    "長崎県",
+    "熊本県",
+    "大分県",
+    "宮崎県",
+    "鹿児島県",
+    "沖縄県"
+]
+# 県名を除いたリスト
+prefectures_without_name = [prefecture[:-1] for prefecture in prefectures]
 
 def chat(text,
          messages=None,
@@ -58,17 +110,21 @@ def chat(text,
     return response_text
 
 
-def pref_introduction(pref="愛知"):
-    text = pref + '''の観光スポット3点とその説明をしてください。
-                制約
-                ・各説明を150字以内で生成
-                ・以下のようなjson形式で出力
-                ・観光スポットの英語名を"spot_en"に表示
-                [{"id": 1, "spot": "spot1", "spot_en": "spot1_en", "introduction": ""},{"id": 2, "spot": "spot2", "spot_en": "spot2_en", "introduction": ""},{"id": 3, "spot": "spot3", "spot_en": "spot3_en", "introduction": ""}]
-            '''
-    response_text = chat(text, [])
-    response_json = json.loads(response_text)
-    return response_json
+#都道府県名 -> spot&intro
+def pref_introduction(pref="北海道"):
+    if pref in (prefectures) or pref in (prefectures_without_name):
+        text = pref + '''の観光スポット3点とその説明をしてください。
+                    制約
+                    ・各説明を150字以内で生成
+                    ・以下のようなjson形式で出力
+                    ・観光スポットの英語名を"spot_en"に表示
+                    [{"id": 1, "spot": "spot1", "spot_en": "spot1_en", "introduction": ""},{"id": 2, "spot": "spot2", "spot_en": "spot2_en", "introduction": ""},{"id": 3, "spot": "spot3", "spot_en": "spot3_en", "introduction": ""}]
+                '''
+        response_text = chat(text, [])
+        response_json = json.loads(response_text)
+        return response_json
+    else:# pref(=都道府県名)が47都道府県の名前に存在しないとき
+        return False
 
 if __name__=="__main__":
     api_pref = pref_introduction()
