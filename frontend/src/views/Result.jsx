@@ -87,53 +87,51 @@ const Result = () => {
     instance
       .get(requests)
       .then((response) => {
-        // setLoading(true);
         // setContent(response);
       })
       .catch((error) => console.log(error));
+    setLoading(false);
   }, []);
 
   return (
     <>
-      <div className="container">
-        {loading ? (
-          <div className="loader-container">
-            <TrNavbar />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div
-              className="spinner"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
-              <ClipLoader color="#52bfd9" size={150} />
-            </div>
+      {loading ? (
+        <div className="loader-container">
+          <TrNavbar />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div
+            className="spinner"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "row",
+            }}
+          >
+            <ClipLoader color="#52bfd9" size={150} />
           </div>
-        ) : (
-          <div className="main-content">
-            <TrNavbar />
-            <Title items={carousel} />
+        </div>
+      ) : (
+        <div className="main-content">
+          <TrNavbar />
+          <Title items={carousel} place={searchStr} />
 
-            <Intro spot={content[0].spot} intro={content[0].introduction} />
-            <Gallery pics={content[0].pics} />
+          <Intro spot={content[0].spot} intro={content[0].introduction} />
+          <Gallery pics={content[0].pics} />
 
-            <Intro spot={content[1].spot} intro={content[1].introduction} />
-            <Gallery pics={content[1].pics} />
+          <Intro spot={content[1].spot} intro={content[1].introduction} />
+          <Gallery pics={content[1].pics} />
 
-            <Intro spot={content[2].spot} intro={content[2].introduction} />
-            <Gallery pics={content[2].pics} />
+          <Intro spot={content[2].spot} intro={content[2].introduction} />
+          <Gallery pics={content[2].pics} />
 
-            <SimpleFooter />
-          </div>
-        )}
-      </div>
+          <SimpleFooter />
+        </div>
+      )}
     </>
   );
 };
