@@ -16,34 +16,23 @@
 
 */
 import React from "react";
+
 // core components
 import TrNavbar from "components/Navbars/TrNavbar";
-
+import Screen from "components/Screen";
 import SimpleFooter from "components/Footers/SimpleFooter";
-import Title from "components/Title";
-import Intro from "components/Intro";
-import Gallery from "components/Gallery";
 
 
 // index page sections
-
-
-class Result extends React.Component {
-  render() {
+const Index = () => {
     return (
       <>
         <TrNavbar />
-        <Title />
-        <Intro />
-        <Gallery />
-        <Intro />
-        <Gallery />
-        <Intro />
-        <Gallery />
+        <Screen />
         <SimpleFooter/>
       </>
     );
   }
-}
 
-export default Result;
+export default Index;
+
