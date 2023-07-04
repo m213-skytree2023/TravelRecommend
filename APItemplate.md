@@ -1,14 +1,14 @@
 # API
 
 ## Introduction
-都道府県毎のおすすめの観光スポットとその説明をChatGPTを使用して3つ取得
+都道府県毎のおすすめの観光スポットとその説明をChatGPTから推薦する
 
 ## Base URL
 https://api.example.com/v1
 
 ## Resources
 
-### ChatGPT [/]
+### ChatGPT [/pref/{pref_name}]
 
 ### Function Introduction [GET]  
 
@@ -46,16 +46,20 @@ https://api.example.com/v1
         ```
 
 + Response 404 (application/json)
-    + Body
+    + Body  
+        ```
         {
             "message": "User not found"
         }
+        ```    
 
 + Response 404 (application/json)
-    + Body
+    + Body  
+        ``` 
         {
             "message": "pref not found"
         }
+        ``` 
 
 
 ### Graph [/]

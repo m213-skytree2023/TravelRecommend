@@ -15,6 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class Item(BaseModel):
     name: str
     price: float
@@ -35,14 +36,18 @@ def read_item(item_id: int, q: str = None):
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
 
+
 @app.delete("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_price": item.price}
 
-#Prefectures introduction
+# Prefectures introduction
+
+
 @app.get("/pref")
 def read_pref():
     return {"Input": "pref_name"}
+
 
 # 都道府県名のリスト
 prefectures = [
@@ -96,7 +101,9 @@ prefectures = [
 ]
 # 県名を除いたリスト
 prefectures_without_name = [prefecture[:-1] for prefecture in prefectures]
-#都道府県名 -> spot&intro
+# 都道府県名 -> spot&intro
+
+
 @app.get("/pref/{pref_name}")
 async def read_pref(pref_name: str):
     if pref_name in (prefectures) or pref_name in (prefectures_without_name):
