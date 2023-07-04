@@ -1,38 +1,17 @@
-import React, { useContext, useState } from "react";
-import { useNavigate} from "react-router-dom";
-import { SearchStrContext } from "./providers/SearchStrProvider";
+import React from "react";
 
+import Search from "./Search";
 // reactstrap components
 import {
   Card,
   Container,
   Row,
   Col,
-  FormGroup,
-  Form,
-  Input,
-  InputGroup,
-  Button,
 } from "reactstrap";
+
 
 const Screen = () => {
 
-  const navigate = useNavigate();
-
-  const [ inputStr, setInputStr ] = useState("");
-
-  const {searchStr, setSearchStr} = useContext(SearchStrContext);
-
-  const searchChange = ( e: ChangeEvent ) => {
-    const { name, value } = e.target;
-    setInputStr(value); // inputStrに検索欄に入力された値が格納される
-  }
-
-  const execSearch = () =>{
-    setSearchStr(inputStr);
-    console.log(inputStr);
-    navigate('/exec_search');
-  }
 
   return (
     <>
@@ -74,29 +53,7 @@ const Screen = () => {
                 </div>
                 <p> </p>
                 <div className="text-center">
-                  <Form>
-                    <FormGroup>
-                      <InputGroup className="input-group mb-4">
-                        <Input
-                          placeholder="行きたい場所は"
-                          type="text"
-                          name="search"
-                          value={inputStr}
-                          onChange={searchChange}
-                        />
-                        <Button
-                          className="btn-icon btn-2"
-                          color="secondary"
-                          type="button"
-                          onClick={execSearch}
-                        >
-                          <span className="btn-inner--icon">
-                            <i className="ni ni-send" />
-                          </span>
-                        </Button>
-                      </InputGroup>
-                    </FormGroup>
-                  </Form>
+                  <Search />
                 </div>
                 <div className="mt-5 py-5 border-top text-center">
                   <Row className="justify-content-center">
