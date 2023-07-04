@@ -50,13 +50,8 @@ const Screen = () => {
                 <div className="mt-5 py-5 border-top text-center">
                   <Row className="justify-content-center">
                     <Col lg="9">
-                      <p>
-                        An artist of considerable range, Ryan — the name taken
-                        by Melbourne-raised, Brooklyn-based Nick Murphy —
-                        writes, performs and records all of his own music,
-                        giving it a warm, intimate feel with a solid groove
-                        structure. An artist of considerable range.
-                      </p>
+                      <p>「日本の魅力を全身で感じる旅へ」</p>
+                      <p>古き良き伝統と先進技術が共存する国、日本。その魅力に包まれた国内旅行へと足を踏み入れませんか？桜の花が咲き誇る春、夏の海辺での涼やかな一時、紅葉が彩る秋、雪景色が広がる冬。四季折々の風景が心を魅了します。古都の街並みで歴史の息吹を感じ、温泉で心身を癒し、地元の味覚を堪能してみませんか？心温まるおもてなしと美しい風景が、あなたの旅を彩ります。日本国内旅行で、新たな発見と感動を体験しましょう。あなたの旅の思い出は、ここで生まれるはずです。</p>
                     </Col>
                   </Row>
                 </div>
