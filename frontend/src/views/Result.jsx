@@ -19,6 +19,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { SearchStrContext } from "../components/providers/SearchStrProvider";
+import ClipLoader from "react-spinners/ClipLoader";
 // core components
 import TrNavbar from "components/Navbars/TrNavbar";
 
@@ -36,6 +37,8 @@ const Result = () => {
   const request_search = "/pref/" + searchStr;
   // const [content, setContent] = useState([]);
   // const [carousel, setCarousel] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   const content = [
     {
@@ -84,6 +87,7 @@ const Result = () => {
     instance
       .get(requests)
       .then((response) => {
+        // setLoading(true);
         // setContent(response);
       })
       .catch((error) => console.log(error));
@@ -91,19 +95,45 @@ const Result = () => {
 
   return (
     <>
-      <TrNavbar />
-      <Title items={carousel}/>
+      <div className="container">
+        {loading ? (
+          <div className="loader-container">
+            <TrNavbar />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div
+              className="spinner"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+              }}
+            >
+              <ClipLoader color="#52bfd9" size={150} />
+            </div>
+          </div>
+        ) : (
+          <div className="main-content">
+            <TrNavbar />
+            <Title items={carousel} />
 
-      <Intro spot={content[0].spot} intro={content[0].introduction} />
-      <Gallery pics={content[0].pics} />
+            <Intro spot={content[0].spot} intro={content[0].introduction} />
+            <Gallery pics={content[0].pics} />
 
-      <Intro spot={content[1].spot} intro={content[1].introduction} />
-      <Gallery pics={content[1].pics} />
+            <Intro spot={content[1].spot} intro={content[1].introduction} />
+            <Gallery pics={content[1].pics} />
 
-      <Intro spot={content[2].spot} intro={content[2].introduction} />
-      <Gallery pics={content[2].pics} />
+            <Intro spot={content[2].spot} intro={content[2].introduction} />
+            <Gallery pics={content[2].pics} />
 
-      <SimpleFooter />
+            <SimpleFooter />
+          </div>
+        )}
+      </div>
     </>
   );
 };

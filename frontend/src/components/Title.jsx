@@ -2,10 +2,9 @@ import React from "react";
 
 import { Container, Row, Col, UncontrolledCarousel } from "reactstrap";
 
-
 const Title = (props) => {
-    return (
-      <>
+  return (
+    <>
       <>
         <section className="section section-shaped">
           <div className="shape shape-style-1 shape-default">
@@ -50,8 +49,8 @@ const Title = (props) => {
           </div>
         </section>
       </>
-      </>
-    );
-}
+    </>
+  );
+};
 
 export default Title;
