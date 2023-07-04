@@ -5,7 +5,7 @@ from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
 API_URL = "https://api.openai.com/v1/chat/completions"
-API_KEY = ""
+API_KEY = "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"
 # 都道府県名のリスト
 prefectures = [
     "北海道",
@@ -127,6 +127,6 @@ def pref_introduction(pref):
         return False
 
 if __name__=="__main__":
-    api_pref = pref_introduction()
+    api_pref = pref_introduction("北海道")
     print('spot of id1 :' + api_pref[0]["spot_en"])
     print(api_pref)
