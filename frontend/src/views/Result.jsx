@@ -34,8 +34,8 @@ import { requests, instance } from "components/axios";
 const Result = () => {
   const contextValue = useContext(SearchStrContext);
   const searchStr = contextValue.searchStr;
-  const searchKey = {search: searchStr};
-  const request_search = "/pref/search";
+  const searchKey = {pref_name: searchStr};
+  const request_search = "/pref";
   // const [content, setContent] = useState([]);
   // const [carousel, setCarousel] = useState([]);
 
@@ -84,13 +84,14 @@ const Result = () => {
   ];
 
   useEffect(() => {
-    // instance
-    //   .get(request_search, searchStr)
-    //   .then((response) => {
-    //     // console.log(response);
-    //     // setContent(response);
-    //   })
-    //   .catch((error) => console.log(error));
+    
+    instance
+      .get(request_search)
+      .then((response) => {
+        console.log(response);
+        // setContent(response);
+      })
+      .catch((error) => console.log(error));
     setLoading(false);
   }, []);
 
