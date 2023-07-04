@@ -3,7 +3,7 @@ import React from "react";
 const Weather = (props) => {
   return (
     <>
-      <table class="table table-borderless text-white font-weight-light">
+      <table className="table table-borderless text-white font-weight-light">
         <thead>
           <tr>
             <th scope="col">Date</th>

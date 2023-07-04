@@ -22,7 +22,7 @@ const Title = (props) => {
                 <h1 className="text-white font-weight-light">
                   {props.place}
                 </h1>
-                <Weather />
+                {/* <Weather /> */}
               </Col>
               <Col className="mb-lg-auto" lg="6">
                 <div className="rounded shadow-lg overflow-hidden transform-perspective-right">
