@@ -2,17 +2,9 @@ import React from "react";
 
 import Search from "./Search";
 // reactstrap components
-import {
-  Card,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
+import { Card, Container, Row, Col } from "reactstrap";
 
 const Screen = () => {
-
-
   return (
     <>
       <main className="position-relative">

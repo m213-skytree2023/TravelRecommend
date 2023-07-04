@@ -26,76 +26,82 @@ import SimpleFooter from "components/Footers/SimpleFooter";
 import Title from "components/Title";
 import Intro from "components/Intro";
 import Gallery from "components/Gallery";
+import { requests, instance } from "components/axios";
 
 // index page sections
 
 const Result = () => {
-  const request_search = "";
-
   const contextValue = useContext(SearchStrContext);
-  const searchStr = { search: contextValue.searchStr };
+  const searchStr = contextValue.searchStr;
+  const request_search = "/pref/" + searchStr;
+  // const [content, setContent] = useState([]);
+  // const [carousel, setCarousel] = useState([]);
 
-  // const [spotlist, setSpotList] = useState([]);
-  // const [pics, setPics] = useState([]);
-
-  const spotlist = [
+  const content = [
     {
       id: 1,
-      spot: "spot1",
-      introduction: "XXXXXXXXX",
+      spot: "旭山動物園",
+      spot_en: "Asahiyama Zoo",
+      introduction:
+        "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。",
+      pics: ["url1", "url2", "url3", "url4", "url5"],
     },
     {
       id: 2,
-      spot: "spot2",
-      introduction: "XXXXXXXXX",
-    },
-    {
-      id: 3,
-      spot: "spot3",
-      introduction: "XXXXXXXXX",
-    },
-  ];
-
-  const pics = [
-    {
-      id: 1,
-      spot: "spot1",
-      pics: ["https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwyfHx0b2t5b3xqYXwwfHx8fDE2ODgzNjc5NDZ8MA&ixlib=rb-4.0.3", "url2", "url3", "url4", "url5"],
-    },
-    {
-      id: 2,
-      spot: "spot2",
+      spot: "函館山",
+      spot_en: "Mount Hakodate",
+      introduction:
+        "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。",
       pics: ["url1", "url2", "url3", "url4", "url5"],
     },
     {
       id: 3,
-      spot: "spot3",
+      spot: "美瑛の丘",
+      spot_en: "Biei Hills",
+      introduction:
+        "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。",
       pics: ["url1", "url2", "url3", "url4", "url5"],
     },
   ];
 
-  // useEffect(()=>{
-  //   setSpotList(spottemp);
-  //   console.log(spotlist);
-  // }
-  // )
+  const carousel = [
+    {
+      src: require("assets/img/theme/img-1-1200x1000.jpg"),
+      altText: "",
+      caption: "",
+      header: "",
+    },
+    {
+      src: require("assets/img/theme/img-2-1200x1000.jpg"),
+      altText: "",
+      caption: "",
+      header: "",
+    },
+  ];
 
-  // setSpotList(spottemp);
-  // console.log(spotlist);
+  useEffect(() => {
+    console.log(request_search);
+    instance
+      .get(requests)
+      .then((response) => {
+        // setContent(response);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
       <TrNavbar />
-      <Title />
+      <Title items={carousel}/>
 
-      <Intro spot={spotlist[0].spot} intro={spotlist[0].introduction} />
-      <Gallery pics = {pics[0].pics}/>
+      <Intro spot={content[0].spot} intro={content[0].introduction} />
+      <Gallery pics={content[0].pics} />
 
-      <Intro spot={spotlist[1].spot} intro={spotlist[1].introduction} />
-      <Gallery pics = {pics[1].pics}/>
+      <Intro spot={content[1].spot} intro={content[1].introduction} />
+      <Gallery pics={content[1].pics} />
 
-      <Intro spot={spotlist[2].spot} intro={spotlist[2].introduction} />
-      <Gallery pics = {pics[2].pics}/>
+      <Intro spot={content[2].spot} intro={content[2].introduction} />
+      <Gallery pics={content[2].pics} />
 
       <SimpleFooter />
     </>

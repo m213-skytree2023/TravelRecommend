@@ -2,13 +2,8 @@ import React from "react";
 
 import Search from "../Search";
 // reactstrap components
-import {
-  Container,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  Nav,
-} from "reactstrap";
+import { Container, NavbarBrand, Navbar, NavItem, Nav } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class TrNavbar extends React.Component {
   render() {
@@ -16,9 +11,11 @@ class TrNavbar extends React.Component {
       <>
         <Navbar className="navbar-dark bg-primary" expand="lg">
           <Container>
-            <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
+            <Link to="/">
+            <NavbarBrand href="#pablo">
               旅行したいならおすすめ⭐
             </NavbarBrand>
+            </Link>
           </Container>
           <Nav>
             <NavItem>

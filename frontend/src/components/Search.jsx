@@ -12,22 +12,22 @@ import {
 } from "reactstrap";
 
 const Search = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const [inputStr, setInputStr] = useState("");
-
-  const { searchStr, setSearchStr } = useContext(SearchStrContext);
-
-  const searchChange = (e: ChangeEvent) => {
-    const { name, value } = e.target;
-    setInputStr(value); // inputStrに検索欄に入力された値が格納される
-  };
-
-  const execSearch = () => {
-    setSearchStr(inputStr);
-    console.log(inputStr);
-    navigate("/exec_search");
-  };
+    const [inputStr, setInputStr] = useState("");
+  
+    const { searchStr, setSearchStr } = useContext(SearchStrContext);
+  
+    const searchChange = (e: ChangeEvent) => {
+      const { name, value } = e.target;
+      setInputStr(value); // inputStrに検索欄に入力された値が格納される
+    };
+  
+    const execSearch = () => {
+      setSearchStr(inputStr);
+      console.log(inputStr);
+      navigate("/exec_search");
+    };
 
   return (
     <>

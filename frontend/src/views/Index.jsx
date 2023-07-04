@@ -22,17 +22,15 @@ import TrNavbar from "components/Navbars/TrNavbar";
 import Screen from "components/Screen";
 import SimpleFooter from "components/Footers/SimpleFooter";
 
-
 // index page sections
 const Index = () => {
-    return (
-      <>
-        <TrNavbar />
-        <Screen />
-        <SimpleFooter/>
-      </>
-    );
-  }
+  return (
+    <>
+      <TrNavbar />
+      <Screen />
+      <SimpleFooter />
+    </>
+  );
+};
 
 export default Index;
-
