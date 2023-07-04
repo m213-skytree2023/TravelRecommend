@@ -26,7 +26,7 @@ def read_pref():
 #都道府県名 -> spot&intro
 @app.post("/pref/search")
 async def read_pref(pref_name: Pref):
-    pref = pref_introduction(pref=pref_name)
+    pref = pref_introduction(pref=pref_name.pref_name)
     if pref: 
         return pref
     else:

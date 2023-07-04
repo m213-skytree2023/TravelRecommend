@@ -35,7 +35,7 @@ const Result = () => {
   const contextValue = useContext(SearchStrContext);
   const searchStr = contextValue.searchStr;
   const searchKey = {pref_name: searchStr};
-  const request_search = "/pref";
+  const request_search = '/pref/search';
   // const [content, setContent] = useState([]);
   // const [carousel, setCarousel] = useState([]);
 
@@ -86,7 +86,7 @@ const Result = () => {
   useEffect(() => {
     
     instance
-      .get(request_search)
+      .post(request_search,searchKey)
       .then((response) => {
         console.log(response);
         // setContent(response);
