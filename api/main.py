@@ -7,6 +7,9 @@ from pref_intro import pref_introduction
 
 app = FastAPI()
 
+class Pref(BaseModel):
+    pref_name    : str
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -22,7 +25,7 @@ def read_pref():
 
 #都道府県名 -> spot&intro
 @app.post("/pref/search")
-async def read_pref(pref_name: str):
+async def read_pref(pref_name: Pref):
     pref = pref_introduction(pref=pref_name)
     if pref: 
         return pref
