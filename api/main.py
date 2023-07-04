@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from random import randint
@@ -43,7 +43,6 @@ def update_item(item_id: int, item: Item):
 @app.get("/pref")
 def read_pref():
     return {"Input": "pref_name"}
-prefectures = ["北海道", ""]
 
 # 都道府県名のリスト
 prefectures = [
@@ -97,9 +96,11 @@ prefectures = [
 ]
 # 県名を除いたリスト
 prefectures_without_name = [prefecture[:-1] for prefecture in prefectures]
+#都道府県名 -> spot&intro
 @app.get("/pref/{pref_name}")
 async def read_pref(pref_name: str):
     if pref_name in (prefectures) or pref_name in (prefectures_without_name):
         pref = pref_introduction(pref=pref_name)
         return pref
-    return {"code": 101, "message": "invalid name error"}
+    else:
+        raise HTTPException(status_code=404, detail="pref not found")
