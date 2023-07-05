@@ -45,8 +45,7 @@ def get_images(json_data):
 
 if __name__=="__main__":
     query_data = {
-        "query": ["Tokyo", "Kyoto", "Osaka"]
+        "query": ["Tokyo"]
     }
-
     images_json = get_images(query_data)
     print(images_json)
