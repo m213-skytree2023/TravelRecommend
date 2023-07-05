@@ -127,6 +127,5 @@ def pref_introduction(pref):
         return False
 
 if __name__=="__main__":
-    api_pref = pref_introduction()
-    print('spot of id1 :' + api_pref[0]["spot_en"])
+    api_pref = pref_introduction("北海道")
     print(api_pref)

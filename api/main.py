@@ -43,22 +43,20 @@ async def search_pictures(query: str):
     images_json = get_images(query_data)
     return images_json
 
-@app.post('/images')
-def get_processed_data():
-    # 调用 pref_introduction 函数获取数据
-    api_pref = pref_introduction()
-    print('spot of id1: ' + api_pref[0]["spot_en"])
+@app.post("/combined")
+async def combined_route(pref_name: Pref):
+    pref_data = pref_introduction(pref=pref_name.pref_name)
 
-    # 处理冈本json
-    processed_data = process_json_data(api_pref)
+    if pref_data:
+        processed_data = process_json_data(pref_data)
 
-    for item in processed_data:
-        spot = item['spot']
-        pics = search_images(spot)
-        item['pics'] = pics
+        for item in processed_data:
+            spot = item['spot']
+            pics = search_images(spot)
+            item['pics'] = pics
 
-    # json.dumps() 将数据转换为 JSON 字符串
-    json_data = json.dumps(processed_data, ensure_ascii=False)
+        json_data = json.dumps(processed_data, ensure_ascii=False)
 
-    # 返回 JSON 响应
-    return Response(json_data, content_type='application/json; charset=utf-8')
+        return Response(json_data)
+    else:
+        raise HTTPException(status_code=404, detail="Prefecture not found")
