@@ -2,27 +2,7 @@ import requests
 import urllib3
 import json
 
-#接受json数据，处理小冈的json数据
-def process_json_data(json_data):
-    processed_data = []
 
-    for item in json_data:
-        spot = item.get('spot', '')
-        spot_en = item.get('spot_en', '')
-        introduction = item.get('introduction', '')
-
-    #列表报错？将写在字典里，便于处理
-        processed_item = {
-            'id': item.get('id', None),
-            'spot': spot,
-            'spot_en': spot_en,
-            'introduction': introduction
-
-        }
-
-        processed_data.append(processed_item)
-
-    return processed_data
 
 def search_images(query):
     access_key = "ZiJdHFcTeuKssundn9nO55pgQVqYpAQoTyoBKIenLNw"
