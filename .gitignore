@@ -1,4 +1,5 @@
 # api folder 内の "pref_intro.py"は変更しない
 # → API_KEYをGitHubにUploadすると使用できなくなるため
 
-api/pref_intro.py
+/api/pref_intro.py
+/api/__pycache__/
