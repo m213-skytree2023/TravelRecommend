@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from random import randint
 from Usplash_api import get_images
-from usplash_api_re import process_json_data, search_images
+from usplash_api_re import  search_images
 import json
 from pref_intro import pref_introduction
 
@@ -45,9 +45,9 @@ async def search_pictures(query: str):
 
 @app.post("/combined")
 async def combined_route(pref_name: Pref):
-    pref_data = pref_introduction(pref=pref_name.pref_name)
+    processed_data = pref_introduction(pref=pref_name.pref_name)
 
-    if pref_data:
+    if processed_data:
         processed_data = process_json_data(pref_data)
 
         for item in processed_data:
