@@ -173,10 +173,10 @@ https://api.unsplash.com/search/photos](https://unsplash.com/developers
       }
   ```
 
-##　Response
+## Response
 データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
 
-##　Response Example
+## Response Example
 + body
   ```
             [
