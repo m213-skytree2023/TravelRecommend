@@ -171,9 +171,10 @@ https://api.unsplash.com/search/photos](https://unsplash.com/developers
       {
         "pref_name": "東京"
       }
- ```
-##　Response Example
-+　データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
+ 　```
+
+##　Response
+データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
 
 ##　Response Example
 + body
