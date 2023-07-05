@@ -62,7 +62,7 @@ prefectures_without_name = [prefecture[:-1] for prefecture in prefectures]
 def chat(text,
          messages=None,
          settings="",
-         max_tokens=500,
+         max_tokens=1000,
          temperature=1.,
          top_p=.1,
          presence_penalty=0.,
