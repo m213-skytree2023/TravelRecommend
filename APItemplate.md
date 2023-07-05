@@ -62,14 +62,14 @@ https://api.example.com/v1
         ``` 
 
 
-# Graph Search API [GET /picture/{query}]
+# Graph Search API
 
 ## Introduction
 このAPIを使用すると、提供されたクエリに基づいて画像を検索し、関連する画像データを取得することができる。
 ## Endpoint 
 + GET /picture/{query}
 ## Parameters 
-query（パスパラメーター）：画像検索のためのクエリ語句、URLパスの一部として含まれる。
++ query（パスパラメーター）：画像検索のためのクエリ語句、URLパスの一部として含まれる。
 ## Request Example
 + GET /picture/Tokyo 
 ## Response Example
