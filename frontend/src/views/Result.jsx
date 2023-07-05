@@ -34,38 +34,38 @@ import { requests, instance } from "components/axios";
 const Result = () => {
   const contextValue = useContext(SearchStrContext);
   const searchStr = contextValue.searchStr;
-  const searchKey = { pref_name: "東京都" };
-  const request_search = "/pref/search";
+  const searchKey = { pref_name: searchStr };
+  const request_search = "/combined";
   const [content, setContent] = useState([]);
   // const [carousel, setCarousel] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const c1 = [
-    {
-      id: 1,
-      spot: "旭山動物園",
-      spot_en: "Asahiyama Zoo",
-      introduction:
-        "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。",
-      pics: ["url1", "url2", "url3", "url4", "url5"],
-    },
-    {
-      id: 2,
-      spot: "函館山",
-      spot_en: "Mount Hakodate",
-      introduction:
-        "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。",
-      pics: ["url1", "url2", "url3", "url4", "url5"],
-    },
-    {
-      id: 3,
-      spot: "美瑛の丘",
-      spot_en: "Biei Hills",
-      introduction:
-        "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。",
-      pics: ["url1", "url2", "url3", "url4", "url5"],
-    },
-  ];
+  // const c1 = [
+  //   {
+  //     id: 1,
+  //     spot: "旭山動物園",
+  //     spot_en: "Asahiyama Zoo",
+  //     introduction:
+  //       "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。",
+  //     pics: ["url1", "url2", "url3", "url4", "url5"],
+  //   },
+  //   {
+  //     id: 2,
+  //     spot: "函館山",
+  //     spot_en: "Mount Hakodate",
+  //     introduction:
+  //       "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。",
+  //     pics: ["url1", "url2", "url3", "url4", "url5"],
+  //   },
+  //   {
+  //     id: 3,
+  //     spot: "美瑛の丘",
+  //     spot_en: "Biei Hills",
+  //     introduction:
+  //       "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。",
+  //     pics: ["url1", "url2", "url3", "url4", "url5"],
+  //   },
+  // ];
 
   const carousel = [
     {
@@ -83,18 +83,22 @@ const Result = () => {
   ];
 
   useEffect(() => {
+    console.log(searchKey);
+    if (!loading){
+      return
+    }
     instance
       .post(request_search, searchKey)
       .then((response) => {
-        console.log(response.data);
         setContent(response.data);
+        console.log(response.data);
         console.log(content);
         if (content.length > 0){
           setLoading(false);
         }
       })
       .catch(error => console.log(error));
-  },[content]);
+  },[content,searchKey]);
 
   return (
     <>
@@ -124,13 +128,13 @@ const Result = () => {
           <Title items={carousel} place={searchStr} />
 
           <Intro spot={content[0].spot} intro={content[0].introduction} />
-          {/* <Gallery pics={content[0].pics} /> */}
+          <Gallery pics={content[0].pics} />
 
           <Intro spot={content[1].spot} intro={content[1].introduction} />
-          {/* <Gallery pics={content[1].pics} /> */}
+          <Gallery pics={content[1].pics} />
 
           <Intro spot={content[2].spot} intro={content[2].introduction} />
-          {/* <Gallery pics={content[2].pics} /> */}
+          <Gallery pics={content[2].pics} />
 
           <SimpleFooter />
         </div>
