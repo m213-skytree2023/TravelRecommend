@@ -53,16 +53,10 @@ async def combined_route(pref_name: Pref):
         for item in processed_data:
             spot_en = item['spot_en']
             pics = search_images(spot_en)
-
-            if len(pics) == 0:
-                error_message = "検索キーワードが無効です。画像が見つかりませんでした"
-                raise HTTPException(status_code=404, detail=error_message)
-
             item['pics'] = pics
 
         json_data = json.dumps(processed_data, ensure_ascii=False)
 
         return json_data
     else:
-        error_message = "都道府県名が見つかりませんでした"
-        raise HTTPException(status_code=404, detail=error_message)
+        return False
