@@ -37,7 +37,7 @@ const Result = () => {
   const searchKey = { pref_name: searchStr };
   const request_search = "/combined";
   const [content, setContent] = useState([]);
-  // const [carousel, setCarousel] = useState([]);
+  const [carousel, setCarousel] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // const c1 = [
@@ -67,20 +67,20 @@ const Result = () => {
   //   },
   // ];
 
-  const carousel = [
-    {
-      src: require("assets/img/theme/img-1-1200x1000.jpg"),
-      altText: "",
-      caption: "",
-      header: "",
-    },
-    {
-      src: require("assets/img/theme/img-2-1200x1000.jpg"),
-      altText: "",
-      caption: "",
-      header: "",
-    },
-  ];
+  // const carousel = [
+  //   {
+  //     src: require("assets/img/theme/img-1-1200x1000.jpg"),
+  //     altText: "",
+  //     caption: "",
+  //     header: "",
+  //   },
+  //   {
+  //     src: require("assets/img/theme/img-2-1200x1000.jpg"),
+  //     altText: "",
+  //     caption: "",
+  //     header: "",
+  //   },
+  // ];
 
   useEffect(() => {
     console.log(searchKey);
@@ -90,10 +90,13 @@ const Result = () => {
     instance
       .post(request_search, searchKey)
       .then((response) => {
-        setContent(response.data);
         console.log(response.data);
+        setContent(response.data);
         console.log(content);
         if (content.length > 0){
+          setCarousel(current=>[...current,{src: content[0].pics[0]}]);
+          setCarousel(current=>[...current,{src: content[1].pics[0]}]);
+          setCarousel(current=>[...current,{src: content[2].pics[0]}]);
           setLoading(false);
         }
       })

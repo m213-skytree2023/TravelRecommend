@@ -25,8 +25,8 @@ const Title = (props) => {
                 {/* <Weather /> */}
               </Col>
               <Col className="mb-lg-auto" lg="6">
-                <div className="rounded shadow-lg overflow-hidden transform-perspective-right">
-                  <UncontrolledCarousel items={props.items} />
+                <div className="rounded shadow-lg overflow-hidden transform-perspective-right" style={{height: "300px"}}>
+                  <UncontrolledCarousel  items={props.items} />
                 </div>
               </Col>
             </Row>
