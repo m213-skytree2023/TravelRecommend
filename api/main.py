@@ -55,8 +55,6 @@ async def combined_route(pref_name: Pref):
             pics = search_images(spot_en)
             item['pics'] = pics
 
-        json_data = json.dumps(processed_data, ensure_ascii=False)
-
-        return json_data
+        return processed_data
     else:
         return False

@@ -95,13 +95,13 @@ const Result = () => {
         setContent(response.data);
         console.log(content);
         if (content.length > 0) {
-          if (content[0].pics[0]) {
+          if (content[0].pics.length > 0) {
             setCarousel((current) => [...current, { src: content[0].pics[0] }]);
           }
-          if (content[1].pics[0]) {
+          if (content[1].pics.length > 0) {
             setCarousel((current) => [...current, { src: content[1].pics[0] }]);
           }
-          if (content[2].pics[0]) {
+          if (content[2].pics.length > 0) {
             setCarousel((current) => [...current, { src: content[2].pics[0] }]);
           }
           setLoading(false);
