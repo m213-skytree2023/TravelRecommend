@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException,Response
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from random import randint
@@ -51,12 +51,18 @@ async def combined_route(pref_name: Pref):
         processed_data = process_json_data(pref_data)
 
         for item in processed_data:
-            spot = item['spot']
-            pics = search_images(spot)
+            spot_en = item['spot_en']
+            pics = search_images(spot_en)
+
+            if len(pics) == 0:
+                error_message = "検索キーワードが無効です。画像が見つかりませんでした"
+                raise HTTPException(status_code=404, detail=error_message)
+
             item['pics'] = pics
 
         json_data = json.dumps(processed_data, ensure_ascii=False)
 
-        return Response(json_data)
+        return json_data
     else:
-        raise HTTPException(status_code=404, detail="Prefecture not found")
+        error_message = "都道府県名が見つかりませんでした"
+        raise HTTPException(status_code=404, detail=error_message)
