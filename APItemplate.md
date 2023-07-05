@@ -62,59 +62,32 @@ https://api.example.com/v1
         ``` 
 
 
-### Graph [/]
+# Graph Search API [GET /picture/{query}]
 
-### Function Introduction [POST]  
-
-XXXXXXXXXX
-
-+ Request
-
-    + Body:  
-        ```
-        {
-            "query": [
-                "spot1",
-                "spot2",
-                "spot3"
-            ]
-        }
-        ```  
-
+## Introduction
+このAPIを使用すると、提供されたクエリに基づいて画像を検索し、関連する画像データを取得することができる。
+## Endpoint 
++ GET /picture/{query}
+## Parameters 
+query（パスパラメーター）：画像検索のためのクエリ語句、URLパスの一部として含まれる。
+## Request Example
++ GET /picture/Tokyo 
+## Response Example
 + Response 200 (application/json)
     + Body:  
-        ```
-        [  
-            {  
-                "id": 1,  
-                "spot": "spot1",  
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
-            },
-            {  
-                "id": 2,  
-                "spot": "spot2",  
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
-            },
-            {  
-                "id": 3,  
-                "spot": "spot3",  
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
-            }
-        ]
-
-        ```
-
-+ Response 404 (application/json)
-    + Body
-        {
-            "message": "User not found"
-        }  
+        [
+  {
+    "id": 1,
+    "spot": "Tokyo",
+    "pics": [
+      "https://example.com/image1.jpg",
+      "https://example.com/image2.jpg",
+      "https://example.com/image3.jpg",
+      "https://example.com/image4.jpg",
+      "https://example.com/image5.jpg",
+]
+  }
+]
 
 
 
