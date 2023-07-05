@@ -6,7 +6,6 @@ const Weather = (props) => {
       <table className="table table-borderless text-white font-weight-light">
         <thead>
           <tr>
-            <th scope="col">Date</th>
             <th scope="col">Weather</th>
             <th scope="col">High</th>
             <th scope="col">Low</th>
@@ -14,22 +13,9 @@ const Weather = (props) => {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td>{props.weather.desc}</td>
+            <td>{props.weather.tempmax}</td>
+            <td>{props.weather.tempmin}</td>
           </tr>
         </tbody>
       </table>

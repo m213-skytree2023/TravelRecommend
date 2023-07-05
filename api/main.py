@@ -6,6 +6,7 @@ from Usplash_api import get_images
 from usplash_api_re import  search_images
 import json
 from pref_intro import pref_introduction
+import weather
 
 app = FastAPI()
 
@@ -42,6 +43,11 @@ async def search_pictures(query: str):
     }
     images_json = get_images(query_data)
     return images_json
+
+@app.post("/weather")
+async def post_weather(pref_name: Pref):
+    data = weather.report_weather(place=pref_name.pref_name)
+    return data
 
 @app.post("/combined")
 async def combined_route(pref_name: Pref):

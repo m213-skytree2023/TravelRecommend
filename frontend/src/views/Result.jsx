@@ -38,10 +38,12 @@ const Result = () => {
   const searchStr = contextValue.searchStr;
   const searchKey = { pref_name: searchStr };
   const request_search = "/combined";
+  const request_weather = "/weather";
   const [content, setContent] = useState([]);
   const [carousel, setCarousel] = useState([]);
   const [loading, setLoading] = useState(false);
   const [blank, setBlank] = useState(false);
+  const [weather, setWeather] = useState();
 
   // const c1 = [
   //   {
@@ -96,7 +98,6 @@ const Result = () => {
         console.log(response.data);
         if (response.data === false) {
           setBlank(true);
-          console.log(blank);
           setLoading(true);
         }
         setContent(response.data);
@@ -115,6 +116,13 @@ const Result = () => {
         }
       })
       .catch((error) => console.log(error));
+    instance
+    .post(request_weather,searchKey)
+    .then((response)=>{
+      console.log(response.data);
+      setWeather(response.data);
+    })
+    .catch((error) => console.log(error));
   }, [content, searchKey]);
 
   return (
@@ -178,7 +186,7 @@ const Result = () => {
         ) : (
           <div className="main-content">
             <TrNavbar />
-            <Title items={carousel} place={searchStr} />
+            <Title items={carousel} place={searchStr} weather={weather}/>
 
             <Intro spot={content[0].spot} intro={content[0].introduction} />
             <Gallery pics={content[0].pics} />
