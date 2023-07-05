@@ -47,7 +47,10 @@ async def search_pictures(query: str):
 @app.post("/weather")
 async def post_weather(pref_name: Pref):
     data = weather.report_weather(place=pref_name.pref_name)
-    return data
+    if data:
+        return data
+    else: 
+        return False
 
 @app.post("/combined")
 async def combined_route(pref_name: Pref):

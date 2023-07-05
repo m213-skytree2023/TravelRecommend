@@ -59,7 +59,6 @@ prefectures = [
     "沖縄県"
 ]
 # 県名を除いたリスト
-prefectures_without_name = [prefecture[:-1] for prefecture in prefectures]
 
 def chat(text,
          messages=None,
@@ -114,7 +113,7 @@ def chat(text,
 
 #都道府県名 -> spot&intro
 def pref_introduction(pref):
-    if pref in (prefectures) or pref in (prefectures_without_name):
+    if pref in (prefectures):
         text = pref + '''の観光スポット3点とその説明をしてください。
                     制約
                     ・各説明を150字以内で生成

@@ -1,6 +1,7 @@
 import json
 import requests
 import urllib3
+import pref_intro
 from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -8,14 +9,18 @@ API_TOKEN = ""
 
 
 def report_weather(place):
-    data = get_weather_from_api(place)
-    weather = {
-        "name": data["name"],
-        "desc": data["weather"][0]["description"],
-        "tempmax": data["main"]["temp_max"],
-        "tempmin": data["main"]["temp_min"],
-    }
-    return weather
+    if place in (pref_intro.prefectures):
+        data = get_weather_from_api(place)
+        weather = {
+            "name": data["name"],
+            "desc": data["weather"][0]["description"],
+            "tempmax": data["main"]["temp_max"],
+            "tempmin": data["main"]["temp_min"],
+        }
+        return weather
+    else:
+        return False
+
 
 def get_weather_from_api(place):
 
@@ -29,7 +34,5 @@ def get_weather_from_api(place):
         },
         verify=False
     )
-    
+
     return json.loads(response.text)
-
-
