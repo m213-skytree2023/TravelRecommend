@@ -90,13 +90,19 @@ const Result = () => {
     instance
       .post(request_search, searchKey)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setContent(response.data);
         console.log(content);
         if (content.length > 0){
-          setCarousel(current=>[...current,{src: content[0].pics[0]}]);
-          setCarousel(current=>[...current,{src: content[1].pics[0]}]);
-          setCarousel(current=>[...current,{src: content[2].pics[0]}]);
+          if (content[0].pics[0]){
+            setCarousel(current=>[...current,{src: content[0].pics[0]}]);
+          }
+          if (content[1].pics[0]){
+            setCarousel(current=>[...current,{src: content[1].pics[0]}]);
+          }
+          if (content[2].pics[0]){
+            setCarousel(current=>[...current,{src: content[2].pics[0]}]);
+          }
           setLoading(false);
         }
       })
