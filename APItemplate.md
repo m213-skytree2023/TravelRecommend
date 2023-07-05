@@ -74,7 +74,8 @@ query（パスパラメーター）：画像検索のためのクエリ語句、
 + GET /picture/Tokyo 
 ## Response Example
 + Response 200 (application/json)
-    + Body:  
+    + Body:
+       ``` 
         [
   {
     "id": 1,
@@ -88,7 +89,9 @@ query（パスパラメーター）：画像検索のためのクエリ語句、
 ]
   }
 ]
-
+      ```
+## References
+Unsplash API ドキュメント
 
 
 ### 内部用API [/]
