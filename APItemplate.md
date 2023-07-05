@@ -91,7 +91,7 @@ query（パスパラメーター）：画像検索のためのクエリ語句、
        ]
       ```
 ## References
-Unsplash API ドキュメント
+https://api.unsplash.com/search/photos
 
 
 ### 内部用API [/]
