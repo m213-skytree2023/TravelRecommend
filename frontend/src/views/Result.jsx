@@ -28,7 +28,8 @@ import Title from "components/Title";
 import Intro from "components/Intro";
 import Gallery from "components/Gallery";
 import { requests, instance } from "components/axios";
-import { Container, Row } from "reactstrap";
+import { Container, Row, Card } from "reactstrap";
+import Search from "../components/Search";
 
 // index page sections
 
@@ -39,7 +40,8 @@ const Result = () => {
   const request_search = "/combined";
   const [content, setContent] = useState([]);
   const [carousel, setCarousel] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [blank, setBlank] = useState(false);
 
   // const c1 = [
   //   {
@@ -85,13 +87,18 @@ const Result = () => {
 
   useEffect(() => {
     console.log(searchKey);
-    if (!loading) {
+    if (loading) {
       return;
     }
     instance
       .post(request_search, searchKey)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
+        if (response.data === false) {
+          setBlank(true);
+          console.log(blank);
+          setLoading(true);
+        }
         setContent(response.data);
         console.log(content);
         if (content.length > 0) {
@@ -104,7 +111,7 @@ const Result = () => {
           if (content[2].pics.length > 0) {
             setCarousel((current) => [...current, { src: content[2].pics[0] }]);
           }
-          setLoading(false);
+          setLoading(true);
         }
       })
       .catch((error) => console.log(error));
@@ -113,6 +120,79 @@ const Result = () => {
   return (
     <>
       {loading ? (
+        blank ? (
+          <div>
+            <div className="load-container">
+              <TrNavbar />
+              <section className="section section-shaped">
+                <div className="shape shape-style-1 shape-default">
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <Container className="py-md">
+                  <Row className="justify-content-center">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Card className="card-profile shadow mt--300">
+                      <div className="px-4">
+                        <div className="text-center mt-5">
+                          <h3>
+                            都道府県の名前を入力してください。
+                            <span className="font-weight-light"></span>
+                          </h3>
+                        </div>
+                        <p> </p>
+                        <div className="text-center">
+                          <Search />
+                        </div>
+                      </div>
+                    </Card>
+                  </Row>
+                </Container>
+                {/* SVG separator */}
+                <div className="separator separator-bottom separator-skew">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                    version="1.1"
+                    viewBox="0 0 2560 100"
+                    x="0"
+                    y="0"
+                  >
+                    <polygon
+                      className="fill-white"
+                      points="2560 0 2560 100 0 100"
+                    />
+                  </svg>
+                </div>
+              </section>
+            </div>
+          </div>
+        ) : (
+          <div className="main-content">
+            <TrNavbar />
+            <Title items={carousel} place={searchStr} />
+
+            <Intro spot={content[0].spot} intro={content[0].introduction} />
+            <Gallery pics={content[0].pics} />
+
+            <Intro spot={content[1].spot} intro={content[1].introduction} />
+            <Gallery pics={content[1].pics} />
+
+            <Intro spot={content[2].spot} intro={content[2].introduction} />
+            <Gallery pics={content[2].pics} />
+
+            <SimpleFooter />
+          </div>
+        )
+      ) : (
         <div className="load-container">
           <TrNavbar />
           <section className="section section-shaped">
@@ -131,7 +211,6 @@ const Result = () => {
                 <br />
                 <br />
                 <br />
-
                 <ClipLoader color="#ffffff" size={150} />
               </Row>
             </Container>
@@ -152,22 +231,6 @@ const Result = () => {
               </svg>
             </div>
           </section>
-        </div>
-      ) : (
-        <div className="main-content">
-          <TrNavbar />
-          <Title items={carousel} place={searchStr} />
-
-          <Intro spot={content[0].spot} intro={content[0].introduction} />
-          <Gallery pics={content[0].pics} />
-
-          <Intro spot={content[1].spot} intro={content[1].introduction} />
-          <Gallery pics={content[1].pics} />
-
-          <Intro spot={content[2].spot} intro={content[2].introduction} />
-          <Gallery pics={content[2].pics} />
-
-          <SimpleFooter />
         </div>
       )}
     </>
