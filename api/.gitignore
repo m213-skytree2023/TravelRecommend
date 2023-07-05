@@ -1,0 +1,4 @@
+# api folder 内の "apikey.json"にAPI_KEYを書く
+
+/apikey.json
+/__pycache__/

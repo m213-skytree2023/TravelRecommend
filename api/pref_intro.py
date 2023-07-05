@@ -4,7 +4,7 @@ import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
-with open('settings.json') as f:
+with open('apikey.json') as f:
     di = json.load(f)
 API_URL = "https://api.openai.com/v1/chat/completions"
 API_KEY = di["API_KEY"]
