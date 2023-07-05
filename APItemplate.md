@@ -165,16 +165,17 @@ https://api.unsplash.com/search/photos](https://unsplash.com/developers
 ## Request Example
 + body
   ```
-   POST /combined
-
-    リクエストボディのパラメーター：
-  {
-    "pref_name": "東京"
-  }
+       POST /combined
+    
+        リクエストボディのパラメーター：
+      {
+        "pref_name": "東京"
+      }
  ```
 ##　Response Example
 +　データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
-## Response Example
+
+##　Response Example
 + body
   ```
             [
