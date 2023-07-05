@@ -124,6 +124,7 @@ def pref_introduction(pref):
                 '''
         response_text = chat(text, [])
         response_json = json.loads(response_text)
+        print(type(response_json))
         return response_json
     else:# pref(=都道府県名)が47都道府県の名前に存在しないとき
         return False
