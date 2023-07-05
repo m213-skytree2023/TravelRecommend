@@ -163,15 +163,15 @@ https://api.unsplash.com/search/photos](https://unsplash.com/developers
 + pref_name（リクエストボディのパラメーター）：地域名オブジェクトで、pref_nameフィールドに地域名が含まれる。
 
 ## Request Example
-+ body
-  ```
++ Body
+ ```
        POST /combined
     
         リクエストボディのパラメーター：
       {
         "pref_name": "東京"
       }
- 　```
+  ```
 
 ##　Response
 データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
