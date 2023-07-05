@@ -11,11 +11,11 @@ class TrNavbar extends React.Component {
       <>
         <Navbar className="navbar-dark bg-primary" expand="lg">
           <Container>
-            <Link to="/">
-            <NavbarBrand href="#pablo">
-              旅行したいならおすすめ⭐
+
+            <NavbarBrand href="#">
+             旅行したいならおすすめ⭐
             </NavbarBrand>
-            </Link>
+
           </Container>
           <Nav>
             <NavItem>

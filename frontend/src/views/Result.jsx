@@ -34,14 +34,13 @@ import { requests, instance } from "components/axios";
 const Result = () => {
   const contextValue = useContext(SearchStrContext);
   const searchStr = contextValue.searchStr;
-  const searchKey = {pref_name: searchStr};
-  const request_search = '/pref/search';
-  // const [content, setContent] = useState([]);
+  const searchKey = { pref_name: "東京都" };
+  const request_search = "/pref/search";
+  const [content, setContent] = useState([]);
   // const [carousel, setCarousel] = useState([]);
-
   const [loading, setLoading] = useState(true);
 
-  const content = [
+  const c1 = [
     {
       id: 1,
       spot: "旭山動物園",
@@ -84,16 +83,18 @@ const Result = () => {
   ];
 
   useEffect(() => {
-    
     instance
-      .post(request_search,searchKey)
+      .post(request_search, searchKey)
       .then((response) => {
-        console.log(response);
-        // setContent(response);
+        console.log(response.data);
+        setContent(response.data);
+        console.log(content);
+        if (content.length > 0){
+          setLoading(false);
+        }
       })
-      .catch((error) => console.log(error));
-    setLoading(false);
-  }, []);
+      .catch(error => console.log(error));
+  },[content]);
 
   return (
     <>
@@ -123,13 +124,13 @@ const Result = () => {
           <Title items={carousel} place={searchStr} />
 
           <Intro spot={content[0].spot} intro={content[0].introduction} />
-          <Gallery pics={content[0].pics} />
+          {/* <Gallery pics={content[0].pics} /> */}
 
           <Intro spot={content[1].spot} intro={content[1].introduction} />
-          <Gallery pics={content[1].pics} />
+          {/* <Gallery pics={content[1].pics} /> */}
 
           <Intro spot={content[2].spot} intro={content[2].introduction} />
-          <Gallery pics={content[2].pics} />
+          {/* <Gallery pics={content[2].pics} /> */}
 
           <SimpleFooter />
         </div>

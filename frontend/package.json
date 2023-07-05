@@ -40,12 +40,18 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "axios": "^1.4.0",
     "bootstrap": "4.6.2",
@@ -61,7 +67,8 @@
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "reactstrap": "8.10.0",
-    "sass": "1.62.1"
+    "sass": "1.62.1",
+    "web-vitals": "^3.3.2"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
