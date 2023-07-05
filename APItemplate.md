@@ -77,18 +77,18 @@ query（パスパラメーター）：画像検索のためのクエリ語句、
     + Body:
        ``` 
         [
-  {
-    "id": 1,
-    "spot": "Tokyo",
-    "pics": [
-      "https://example.com/image1.jpg",
-      "https://example.com/image2.jpg",
-      "https://example.com/image3.jpg",
-      "https://example.com/image4.jpg",
-      "https://example.com/image5.jpg",
-]
-  }
-]
+         {
+          "id": 1,
+          "spot": "Tokyo",
+          "pics": [
+              "https://example.com/image1.jpg",
+              "https://example.com/image2.jpg",
+              "https://example.com/image3.jpg",
+              "https://example.com/image4.jpg",
+              "https://example.com/image5.jpg",
+          ]
+        }
+       ]
       ```
 ## References
 Unsplash API ドキュメント
