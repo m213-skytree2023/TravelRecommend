@@ -48,7 +48,6 @@ async def combined_route(pref_name: Pref):
     processed_data = pref_introduction(pref=pref_name.pref_name)
 
     if processed_data:
-        processed_data = process_json_data(pref_data)
 
         for item in processed_data:
             spot_en = item['spot_en']
