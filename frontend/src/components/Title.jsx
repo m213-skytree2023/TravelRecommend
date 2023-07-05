@@ -6,7 +6,6 @@ import Weather from "./Weather"
 const Title = (props) => {
   return (
     <>
-      <>
         <section className="section section-shaped">
           <div className="shape shape-style-1 shape-default">
             <span />
@@ -46,7 +45,6 @@ const Title = (props) => {
           </div>
         </section>
       </>
-    </>
   );
 };
 
