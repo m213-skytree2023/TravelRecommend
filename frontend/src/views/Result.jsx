@@ -28,6 +28,7 @@ import Title from "components/Title";
 import Intro from "components/Intro";
 import Gallery from "components/Gallery";
 import { requests, instance } from "components/axios";
+import { Container, Row } from "reactstrap";
 
 // index page sections
 
@@ -84,8 +85,8 @@ const Result = () => {
 
   useEffect(() => {
     console.log(searchKey);
-    if (!loading){
-      return
+    if (!loading) {
+      return;
     }
     instance
       .post(request_search, searchKey)
@@ -93,43 +94,64 @@ const Result = () => {
         // console.log(response.data);
         setContent(response.data);
         console.log(content);
-        if (content.length > 0){
-          if (content[0].pics[0]){
-            setCarousel(current=>[...current,{src: content[0].pics[0]}]);
+        if (content.length > 0) {
+          if (content[0].pics.length > 0) {
+            setCarousel((current) => [...current, { src: content[0].pics[0] }]);
           }
-          if (content[1].pics[0]){
-            setCarousel(current=>[...current,{src: content[1].pics[0]}]);
+          if (content[1].pics.length > 0) {
+            setCarousel((current) => [...current, { src: content[1].pics[0] }]);
           }
-          if (content[2].pics[0]){
-            setCarousel(current=>[...current,{src: content[2].pics[0]}]);
+          if (content[2].pics.length > 0) {
+            setCarousel((current) => [...current, { src: content[2].pics[0] }]);
           }
           setLoading(false);
         }
       })
-      .catch(error => console.log(error));
-  },[content,searchKey]);
+      .catch((error) => console.log(error));
+  }, [content, searchKey]);
 
   return (
     <>
       {loading ? (
-        <div className="loader-container">
+        <div className="load-container">
           <TrNavbar />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <div
-            className="spinner"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "row",
-            }}
-          >
-            <ClipLoader color="#52bfd9" size={150} />
-          </div>
+          <section className="section section-shaped">
+            <div className="shape shape-style-1 shape-default">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <Container className="py-md">
+              <Row className="justify-content-center">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <ClipLoader color="#ffffff" size={150} />
+              </Row>
+            </Container>
+            {/* SVG separator */}
+            <div className="separator separator-bottom separator-skew">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+                version="1.1"
+                viewBox="0 0 2560 100"
+                x="0"
+                y="0"
+              >
+                <polygon
+                  className="fill-white"
+                  points="2560 0 2560 100 0 100"
+                />
+              </svg>
+            </div>
+          </section>
         </div>
       ) : (
         <div className="main-content">

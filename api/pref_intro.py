@@ -4,7 +4,7 @@ import urllib3
 from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
-with open('settings.json') as f:
+with open('apikey.json') as f:
     di = json.load(f)
 API_URL = "https://api.openai.com/v1/chat/completions"
 API_KEY = di["API_KEY"]
@@ -124,6 +124,7 @@ def pref_introduction(pref):
                 '''
         response_text = chat(text, [])
         response_json = json.loads(response_text)
+        print(type(response_json))
         return response_json
     else:# pref(=都道府県名)が47都道府県の名前に存在しないとき
         return False
