@@ -43,9 +43,10 @@ def get_images(json_data):
     json_response = json.dumps(response)
     return json_response
 
-query_data = {
-    "query": ["Tokyo", "Kyoto", "Osaka"]
-}
+if __name__=="__main__":
+    query_data = {
+        "query": ["Tokyo", "Kyoto", "Osaka"]
+    }
 
-images_json = get_images(query_data)
-print(images_json)
+    images_json = get_images(query_data)
+    print(images_json)
