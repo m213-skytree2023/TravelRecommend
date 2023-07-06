@@ -1,183 +1,229 @@
 # API
 
 ## Introduction
-都道府県毎のおすすめの観光スポットとその説明をChatGPTから推薦する
+
+都道府県毎のおすすめの観光スポットとその説明を ChatGPT から推薦する
 
 ## Base URL
-https://api.example.com/v1
+
+https://api.kitaakabane2023.site
 
 ## Resources
 
 ### ChatGPT [/pref/{pref_name}]
 
-### Function Introduction [GET]  
+### Function Introduction [GET]
 
-47都道府県名を入力（漢字のみ、都道府県は付けても付けなくてもよい）すると、3つ観光スポット名とその観光スポットの説明を返す。
+47 都道府県名を入力（漢字のみ、都道府県は付けても付けなくてもよい）すると、3 つ観光スポット名とその観光スポットの説明を返す。
 
-+ Request
+- Request
 
-    + Parameters:  
-        + pref_name : (string, required) - Search prefectures name
+  - Parameters:
+    - pref_name : (string, required) - Search prefectures name
 
-+ Response 200 (application/json)
-    + Body:  
-        ```
-        [
-            {
-                "id": 1,
-                "spot": "旭山動物園",
-                "spot_en": "Asahiyama Zoo",
-                "introduction": "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。"
-            },
-            {
-                "id": 2,
-                "spot": "函館山",
-                "spot_en": "Mount Hakodate",
-                "introduction": "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。"
-            },
-            {
-                "id": 3,
-                "spot": "美瑛の丘",
-                "spot_en": "Biei Hills",
-                "introduction": "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。"
-            }
-        ]
+- Response 200 (application/json)
 
-        ```
+  - Body:
 
-+ Response 404 (application/json)
-    + Body  
-        ```
+    ```
+    [
         {
-            "message": "User not found"
-        }
-        ```    
-
-+ Response 404 (application/json)
-    + Body  
-        ``` 
+            "id": 1,
+            "spot": "旭山動物園",
+            "spot_en": "Asahiyama Zoo",
+            "introduction": "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。"
+        },
         {
-            "message": "pref not found"
+            "id": 2,
+            "spot": "函館山",
+            "spot_en": "Mount Hakodate",
+            "introduction": "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。"
+        },
+        {
+            "id": 3,
+            "spot": "美瑛の丘",
+            "spot_en": "Biei Hills",
+            "introduction": "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。"
         }
-        ``` 
+    ]
 
+    ```
+
+- Response 404 (application/json)
+  - Body
+    ```
+    {
+        "message": "pref not found"
+    }
+    ```
 
 # Graph Search API
 
 ## Introduction
-このAPIを使用すると、提供されたクエリに基づいて画像を検索し、関連する画像データを取得することができる。
-## Endpoint 
-+ GET /picture/{query}
-## Parameters 
-+ query（パスパラメーター）：画像検索のためのクエリ語句、URLパスの一部として含まれる。
+
+この API を使用すると、提供されたクエリに基づいて画像を検索し、関連する画像データを取得することができる。
+
+## Endpoint
+
+- GET /picture/{query}
+
+## Parameters
+
+- query（パスパラメーター）：画像検索のためのクエリ語句、URL パスの一部として含まれる。
+
 ## Request Example
-+ GET /picture/Tokyo 
+
+- GET /picture/Tokyo
+
 ## Response Example
-+ Response 200 (application/json)
-    + Body:
-       ``` 
-        [
-         {
-          "id": 1,
-          "spot": "Tokyo",
-          "pics": [
-              "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwxfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
-              "https://images.unsplash.com/photo-1558240077-e33b10a16a64?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwyfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
-              "https://images.unsplash.com/photo-1609383020819-ccff2af581ce?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwzfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
-              "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHw0fHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
-              "https://images.unsplash.com/photo-1604629142559-081c629d4975?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHw1fHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3"
-          ]
-        }
+
+- Response 200 (application/json)
+  - Body:
+    ```
+     [
+      {
+       "id": 1,
+       "spot": "Tokyo",
+       "pics": [
+           "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwxfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
+           "https://images.unsplash.com/photo-1558240077-e33b10a16a64?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwyfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
+           "https://images.unsplash.com/photo-1609383020819-ccff2af581ce?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHwzfHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
+           "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHw0fHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3",
+           "https://images.unsplash.com/photo-1604629142559-081c629d4975?ixid=M3w0Njk4Mjl8MHwxfHNlYXJjaHw1fHxUb2t5byUyMFRvd2VyfGphfDB8fHx8MTY4ODUyMjQ2M3ww&ixlib=rb-4.0.3"
        ]
-      ```
+     }
+    ]
+    ```
+
 ## References
+
 https://api.unsplash.com/search/photos](https://unsplash.com/developers
 
+### 内部用 API [/]
 
-### 内部用API [/]
+### Function Introduction [GET]
 
-### Function Introduction [GET]  
+47 都道府県名を入力（漢字のみ、都道府県は付けても付けなくてもよい）すると、3 つ観光スポット名とその観光スポットの説明を返す。
 
-47都道府県名を入力（漢字のみ、都道府県は付けても付けなくてもよい）すると、3つ観光スポット名とその観光スポットの説明を返す。
+- Request
 
-+ Request
+  - Parameters:
+    - pref_name : (string, required) - Search prefectures name
 
-    + Parameters:  
-        + pref_name : (string, required) - Search prefectures name
+- Response 200 (application/json)
 
-+ Response 200 (application/json)
-    + Body:  
-        ```
-        [
-            {
-                "id": 1,
-                "spot": "旭山動物園",
-                "spot_en": "Asahiyama Zoo",
-                "introduction": "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。",
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
+  - Body:
 
-            },
-            {
-                "id": 2,
-                "spot": "函館山",
-                "spot_en": "Mount Hakodate",
-                "introduction": "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。",
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
-            },
-            {
-                "id": 3,
-                "spot": "美瑛の丘",
-                "spot_en": "Biei Hills",
-                "introduction": "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。",
-                "pics": [
-                    "url1","url2","url3","url4","url5",
-                ]  
-            }
-        ]
-
-        ```
-
-+ Response 404 (application/json)
-    + Body
+    ```
+    [
         {
-            "message": "User not found"
-        }
+            "id": 1,
+            "spot": "旭山動物園",
+            "spot_en": "Asahiyama Zoo",
+            "introduction": "北海道にある動物園で、多くの動物たちを見ることができます。特に有名なのは、冬になると行われるペンギンのウォークです。",
+            "pics": [
+                "url1","url2","url3","url4","url5",
+            ]
 
-+ Response 404 (application/json)
-    + Body
+        },
         {
-            "message": "pref not found"
+            "id": 2,
+            "spot": "函館山",
+            "spot_en": "Mount Hakodate",
+            "introduction": "函館市にある山で、展望台からは函館市街や夜景を一望することができます。特に夜景は美しく、観光客に人気です。",
+            "pics": [
+                "url1","url2","url3","url4","url5",
+            ]
+        },
+        {
+            "id": 3,
+            "spot": "美瑛の丘",
+            "spot_en": "Biei Hills",
+            "introduction": "美しい風景が広がる美瑛町にある丘です。四季折々の風景が楽しめ、特に夏には美しい花畑が広がります。写真撮影スポットとしても人気です。",
+            "pics": [
+                "url1","url2","url3","url4","url5",
+            ]
         }
+    ]
+
+    ```
+
+- Response 404 (application/json)
+  - Body
+    {
+    "message": "pref not found"
+    }
+
+### Weather [/weather]
+
+### Function Introduction [POST]
+
+47 都道府県名を入力（漢字のみ）すると、当時の天気情報が得られます
+
+- Request
+
+  - Body
+    ```
+    リクエストボディのパラメーター：
+    {
+    "pref_name": "東京都"
+    }
+    ```
+
+- Response 200 (application/json)
+
+  - Body:
+    ```
+    {
+            "name": "東京都",
+            "desc": "曇り",
+            "tempmax": 24.7,
+            "tempmin": 23.64,
+    }
+    ```
+
+- Response 200 (application/json)
+  - Body
+    ```
+    false
+    ```
+## References
+
+[OpenWeatherMap.org](https://openweathermap.org/api)
+  
 
 ## Combined Data API
-このAPIは、地域情報と画像データを組み合わせて処理し、提供された地域名に関連する情報を返すためのものである。
 
-## Endpoint 
-+ POST /combined
+この API は、地域情報と画像データを組み合わせて処理し、提供された地域名に関連する情報を返すためのものである。
 
-## Parameters 
-+ pref_name（リクエストボディのパラメーター）：地域名オブジェクトで、pref_nameフィールドに地域名が含まれる。
+## Endpoint
+
+- POST /combined
+
+## Parameters
+
+- pref_name（リクエストボディのパラメーター）：地域名オブジェクトで、pref_name フィールドに地域名が含まれる。
 
 ## Request Example
-+ Body
- ```
-       POST /combined
-    
-        リクエストボディのパラメーター：
-      {
-        "pref_name": "東京"
-      }
-  ```
+
+- Body
+
+```
+      POST /combined
+
+       リクエストボディのパラメーター：
+     {
+       "pref_name": "東京都"
+     }
+```
 
 ## Response
-データの処理に成功した場合、関連する情報が処理されたJSONオブジェクトが返される。
+
+データの処理に成功した場合、関連する情報が処理された JSON オブジェクトが返される。
 
 ## Response Example
-+ Body
+
+- Body
   ```
             [
           {
@@ -220,7 +266,4 @@ https://api.unsplash.com/search/photos](https://unsplash.com/developers
             ]
           }
         ]
-
-
-
-
+  ```
