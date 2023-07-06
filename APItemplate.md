@@ -67,13 +67,12 @@ https://api.kitaakabane2023.site
 
   - Body
     ```
-    リクエストボディのパラメーター：
     {
     "query": "Tokyo"
     }
     ```
 
-- Response 
+- Response 200 (application/json)
   - Body:
     ```
      [
@@ -90,7 +89,7 @@ https://api.kitaakabane2023.site
      }
     ]
     ```
-- Response 
+- Response 200 (application/json)
   - Body
     ```
     false
@@ -98,7 +97,7 @@ https://api.kitaakabane2023.site
 
 ## References
 
-https://unsplash.com/developers
+[Unsplash api](https://unsplash.com/developers)
 
 ### 内部用 API [/]
 
@@ -165,7 +164,6 @@ https://unsplash.com/developers
 
   - Body
     ```
-    リクエストボディのパラメーター：
     {
     "pref_name": "東京都"
     }
@@ -193,7 +191,8 @@ https://unsplash.com/developers
 [OpenWeatherMap.org](https://openweathermap.org/api)
 
 
-### Combined Data API
+### Combined Data API [/combined]  
+
 ### Function Introduction [POST]
 この API は、地域情報と画像データを組み合わせて処理し、提供された地域名に関連する情報を返すためのものである。
 
@@ -202,18 +201,15 @@ https://unsplash.com/developers
 - Body
 
   ```
-        POST /combined
-  
-         リクエストボディのパラメーター：
        {
          "pref_name": "東京都"
        }
   ```
 
-- Response
+- Response 200 (application/json)
   - Body
     ```
-              [
+        [
             {
               "id": 1,
               "spot": "東京タワー",
@@ -255,10 +251,10 @@ https://unsplash.com/developers
             }
           ]
     ```
-- Response  (combined/json)
+- Response 200 (application/json)
   - Body
     ```
     false
     ```
 ## References
-https://unsplash.com/developers
+[Unsplash](https://unsplash.com/developers)
