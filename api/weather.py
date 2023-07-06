@@ -5,7 +5,9 @@ import pref_intro
 from urllib3.exceptions import InsecureRequestWarning
 urllib3.disable_warnings(InsecureRequestWarning)
 
-API_TOKEN = ""
+with open('weather_apikey.json') as f:
+    di = json.load(f)
+API_TOKEN = di["API_KEY"]
 
 
 def report_weather(place):
