@@ -59,18 +59,14 @@ https://api.kitaakabane2023.site
 
 ### Graph Search API [/picture/{query}]
 
-### Function Introduction [POST]
+### Function Introduction [GET]
 
 このAPIを使用すると、提供されたクエリに基づいて画像を検索し、関連する画像データを取得することができる。
 
 - Request
 
-  - Body
-    ```
-    {
-    "query": "Tokyo"
-    }
-    ```
+  - Parameters:
+    - query : (string, required) - keywrod
 
 - Response 200 (application/json)
   - Body:
@@ -89,12 +85,6 @@ https://api.kitaakabane2023.site
      }
     ]
     ```
-- Response 200 (application/json)
-  - Body
-    ```
-    false
-    ```
-
 ## References
 
 [Unsplash api](https://unsplash.com/developers)
@@ -108,7 +98,7 @@ https://api.kitaakabane2023.site
 - Request
 
   - Parameters:
-    - pref_name : (string, required) - Search prefectures name
+    - query: (string, required) - Search prefectures name
 
 - Response 200 (application/json)
 
@@ -257,4 +247,5 @@ https://api.kitaakabane2023.site
     false
     ```
 ## References
-[Unsplash](https://unsplash.com/developers)
+[Unsplash](https://unsplash.com/developers)  
+[ChatGPT](https://openai.com/chatgpt)
