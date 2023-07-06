@@ -82,7 +82,7 @@ const Result = () => {
       })
       .catch((error) => console.log(error));
 
-      instance
+    instance
       .post(request_weather, searchKey)
       .then((response) => {
         console.log("weather response:" + response.data);
@@ -93,16 +93,15 @@ const Result = () => {
         setWeather(response.data);
       })
       .catch((error) => console.log(error));
-
   }, [content, searchKey]);
 
   return (
     <>
+      <TrNavbar />
       {loading ? (
         blank ? (
           <div>
-            <div className="load-container">
-              <TrNavbar />
+            <main className="position-relative">
               <section className="section section-shaped">
                 <div className="shape shape-style-1 shape-default">
                   <span />
@@ -119,20 +118,18 @@ const Result = () => {
                     <br />
                     <br />
                     <br />
-                    <Card className="card-profile shadow mt--300">
-                      <div className="px-4">
-                        <div className="text-center mt-5">
-                          <h3>
-                            都道府県の名前を入力してください。
-                            <span className="font-weight-light"></span>
-                          </h3>
-                        </div>
-                        <p> </p>
-                        <div className="text-center">
-                          <Search />
-                        </div>
+                    <div className="px-4">
+                      <div className="text-center mt-5">
+                        <h3>
+                          都道府県の名前を入力してください。
+                          <span className="font-weight-light"></span>
+                        </h3>
                       </div>
-                    </Card>
+                      <p> </p>
+                      <div className="text-center">
+                        <Search />
+                      </div>
+                    </div>
                   </Row>
                 </Container>
                 {/* SVG separator */}
@@ -152,11 +149,10 @@ const Result = () => {
                   </svg>
                 </div>
               </section>
-            </div>
+            </main>
           </div>
         ) : (
           <div className="main-content">
-            <TrNavbar />
             <Title items={carousel} place={searchStr} weather={weather} />
 
             <Intro spot={content[0].spot} intro={content[0].introduction} />
@@ -173,7 +169,6 @@ const Result = () => {
         )
       ) : (
         <div className="load-container">
-          <TrNavbar />
           <section className="section section-shaped">
             <div className="shape shape-style-1 shape-default">
               <span />
