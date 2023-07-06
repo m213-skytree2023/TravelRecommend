@@ -182,6 +182,14 @@ const Result = () => {
               <Row className="justify-content-center">
                 <br />
                 <br />
+                <h2 color="#ffffff">{searchStr}の観光スポットを検索しています</h2>
+                <br />
+                <br />
+                <br />
+              </Row>
+              <Row className="justify-content-center">
+                <br />
+                <br />
                 <br />
                 <br />
                 <br />
